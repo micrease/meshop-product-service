@@ -1,6 +1,6 @@
 service:
   # 微服务名
-  service_name: meshop.product.service
+  service_name: meshop-product-service
   # 服务端口
   port: 8004
   # 运行环境
