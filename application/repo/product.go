@@ -1,4 +1,4 @@
-package repository
+package repo
 
 import (
 	model "meshop-product-service/application/model"
@@ -18,7 +18,7 @@ func NewProduct() *Product {
 	return product
 }
 
-func (this *Product) Find(id uint32) (*model.Product, error) {
+func (this *Product) GetOne(id uint32) (*model.Product, error) {
 	product := &model.Product{}
 	product.ID = uint(id)
 	if err := this.db.First(product).Error; err != nil {
@@ -56,7 +56,7 @@ func (this *Product) Delete(product *model.Product) (*model.Product, error) {
 	return product, nil
 }
 
-func (this *Product) FindListLimit(size int32) ([]model.Product, error) {
+func (this *Product) Get(size int32) ([]model.Product, error) {
 	var productList []model.Product
 	if err := this.db.Limit(size).Order("id desc").Find(&productList).Error; err != nil {
 		return nil, err
@@ -64,7 +64,7 @@ func (this *Product) FindListLimit(size int32) ([]model.Product, error) {
 	return productList, nil
 }
 
-func (this *Product) FindByField(key string, value string, fields string) (*model.Product, error) {
+func (this *Product) GetBy(key string, value string, fields string) (*model.Product, error) {
 	if len(fields) == 0 {
 		fields = "*"
 	}
