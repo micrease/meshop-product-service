@@ -1,10 +1,9 @@
 package datasource
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/micrease/micrease-core/config"
 	"github.com/micrease/micrease-core/database"
+	"gorm.io/gorm"
 )
 
 //管理多库连接,读写分离或多库,微服务中不建议连接多个库，如果需要的话可以在这里扩展
