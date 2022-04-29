@@ -1,8 +1,8 @@
 package config
 
 import (
+	"fmt"
 	"github.com/micrease/micrease-core/config"
-	"os"
 	"sync"
 )
 
@@ -11,15 +11,24 @@ type SysConfig struct {
 	config.CommonConfig `yaml:",inline"`
 }
 
+//自定义配置需要实现Config接口
+/*
+type CustomConfig struct {
+	config.Config
+	Name string `yaml:"name "json:"name"`
+}
+*/
+
 var once sync.Once
 var sysConfig *SysConfig
 
 func InitSysConfig() *SysConfig {
 	once.Do(func() {
-		sysConfig = new(SysConfig)
-		err := config.LoadConfigTo(sysConfig)
+		var err error
+		sysConfig, err = config.LoadConfig[SysConfig]()
+		fmt.Println(sysConfig)
 		if err != nil {
-			os.Exit(1)
+			panic(err)
 		}
 	})
 	return sysConfig

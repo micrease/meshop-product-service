@@ -6,7 +6,13 @@ import (
 	"meshop-product-service/datasource"
 )
 
+type Handler interface {
+	NewContext()
+	NewWithContext(ctx context.Context)
+}
+
 type RpcHandler struct {
+	Handler
 	ctx *mctx.Context
 }
 

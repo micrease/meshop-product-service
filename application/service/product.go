@@ -9,6 +9,9 @@ import (
 	"meshop-product-service/application/repo"
 )
 
+/**
+ * 业务逻辑
+ */
 type Product struct {
 	repo *repo.Product
 }

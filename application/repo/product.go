@@ -7,8 +7,8 @@ import (
 )
 
 /**
-实现类
-*/
+ * 数据库操作
+ */
 type Product struct {
 	gorme.Repository[model.Product]
 }
