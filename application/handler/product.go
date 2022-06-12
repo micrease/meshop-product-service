@@ -2,8 +2,8 @@ package handler
 
 import (
 	"context"
-	"github.com/asim/go-micro/v3"
-	"github.com/micrease/meshop-protos/product/pb"
+	pb "github.com/micrease/meshop-protos/pb/product"
+	"go-micro.dev/v4"
 	"meshop-product-service/application/service"
 )
 

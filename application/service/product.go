@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"github.com/micrease/meshop-protos/product/pb"
+	pb "github.com/micrease/meshop-protos/pb/product"
 	"github.com/micrease/micrease-core/context"
 	"github.com/micrease/micrease-core/errs"
 	"meshop-product-service/application/model"

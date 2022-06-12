@@ -3,12 +3,12 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/asim/go-micro/plugins/registry/consul/v3"
-	"github.com/asim/go-micro/v3"
-	"github.com/asim/go-micro/v3/registry"
-	"github.com/asim/go-micro/v3/server"
-	"github.com/asim/go-micro/v3/util/log"
+	"github.com/asim/go-micro/plugins/registry/consul/v4"
 	"github.com/micrease/micrease-core/errs"
+	"go-micro.dev/v4"
+	"go-micro.dev/v4/registry"
+	"go-micro.dev/v4/server"
+	"go-micro.dev/v4/util/log"
 	"meshop-product-service/application/handler"
 	sysConfig "meshop-product-service/config"
 	"meshop-product-service/datasource"
@@ -37,6 +37,8 @@ func main() {
 	conf := sysConfig.Get()
 	log.Info("Version:", conf.Service.Version)
 	//注册
+	registry.NewRegistry()
+
 	consulRegistry := consul.NewRegistry(registry.Addrs(conf.Consul.Addrs))
 
 	opts := []micro.Option{
