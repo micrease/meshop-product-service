@@ -37,10 +37,7 @@ func main() {
 	conf := sysConfig.Get()
 	log.Info("Version:", conf.Service.Version)
 	//注册
-	registry.NewRegistry()
-
 	consulRegistry := consul.NewRegistry(registry.Addrs(conf.Consul.Addrs))
-
 	opts := []micro.Option{
 		micro.Address(conf.Service.ListenHost()),
 		micro.Name(conf.Service.ServiceName),
